@@ -8,6 +8,17 @@ COLLATE utf8mb4_unicode_ci;
 
 USE jvdataaccess_demo;
 
+-- Tabla de ejemplo: Usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    Identificador INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido VARCHAR(100) NOT NULL,
+    Email VARCHAR(200) UNIQUE NOT NULL,
+    Edad INT,
+    Activo TINYINT(1) DEFAULT 1,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Tabla de ejemplo: Productos
 CREATE TABLE IF NOT EXISTS productos (
     Identificador INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -65,6 +76,12 @@ INSERT INTO productos (nombre, descripcion, precio, stock, categoria) VALUES
 ('Monitor LG UltraWide 34"', 'Monitor curvo 21:9 para productividad', 599.99, 20, 'Monitores'),
 ('Auriculares Sony WH-1000XM4', 'Auriculares con cancelación de ruido', 349.99, 40, 'Audio');
 
+INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES
+('Juan', 'Pérez', 'juan.perez@example.com', 30, 1),
+('María', 'González', 'maria.gonzalez@example.com', 28, 1),
+('Luis', 'Martínez', 'luis.martinez@example.com', 35, 1),
+('Carmen', 'López', 'carmen.lopez@example.com', 42, 0);
+
 INSERT INTO clientes (nombre, apellidos, email, telefono, direccion, ciudad, codigo_postal) VALUES
 ('Juan', 'García López', 'juan.garcia@email.com', '600123456', 'Calle Mayor 123', 'Madrid', '28001'),
 ('María', 'Rodríguez Pérez', 'maria.rodriguez@email.com', '600234567', 'Av. Libertad 45', 'Barcelona', '08001'),
@@ -88,4 +105,4 @@ INSERT INTO pedidos_detalle (pedido_id, producto_id, cantidad, precio_unitario, 
 
 -- Mensaje de confirmación
 SELECT '✅ Base de datos inicializada correctamente' AS mensaje;
-SELECT 'Tablas creadas: productos, clientes, pedidos, pedidos_detalle' AS info;
+SELECT 'Tablas creadas: usuarios, productos, clientes, pedidos, pedidos_detalle' AS info;

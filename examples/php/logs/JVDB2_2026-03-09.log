@@ -1,0 +1,103 @@
+2026-03-09 22:57:18 - JVDB2 - INFO - Inicializando pool con 2 conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - JVDB2 inicializado con pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: SELECT * FROM usuarios
+2026-03-09 22:57:18 - JVDB2 - INFO - 5 registros seleccionados de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Inicializando pool con 2 conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - JVDB2 inicializado con pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: SELECT Nombre, Apellido, Email FROM usuarios WHERE Activo = ? ORDER BY Apellido ASC LIMIT 5 | Params: [1]
+2026-03-09 22:57:18 - JVDB2 - INFO - 4 registros seleccionados de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Ana","Garc\u00eda","ana.garcia@example.com",28,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: UPDATE usuarios SET Activo = ? WHERE Email = ? | Params: [0,"ana.garcia@example.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) actualizado(s) en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["ana.garcia@example.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Inicializando pool con 2 conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - JVDB2 inicializado con pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: BEGIN
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Carlos","L\u00f3pez","carlos@test.com",35,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Mar\u00eda","Ruiz","maria@test.com",29,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Pedro","Sanz","pedro@test.com",42,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: COMMIT
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: BEGIN
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Test","User","test@test.com",25,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: ROLLBACK
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["carlos@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool vacío, creando nueva conexión
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["maria@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["pedro@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Inicializando pool con 2 conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - JVDB2 inicializado con pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: BEGIN
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Usuario0","Apellido0","usuario0@test.com",20,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Usuario1","Apellido1","usuario1@test.com",21,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Usuario2","Apellido2","usuario2@test.com",22,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Usuario3","Apellido3","usuario3@test.com",23,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: INSERT INTO usuarios (Nombre, Apellido, Email, Edad, Activo) VALUES (?, ?, ?, ?, ?) | Params: ["Usuario4","Apellido4","usuario4@test.com",24,1]
+2026-03-09 22:57:18 - JVDB2 - INFO - Registro insertado en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Transacción: COMMIT
+2026-03-09 22:57:18 - JVDB2 - INFO - 5 registros insertados en 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["usuario0@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["usuario1@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["usuario2@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["usuario3@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - SQL: DELETE FROM usuarios WHERE Email = ? | Params: ["usuario4@test.com"]
+2026-03-09 22:57:18 - JVDB2 - INFO - 1 registro(s) eliminado(s) de 'usuarios'
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Inicializando pool con 2 conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - JVDB2 inicializado con pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - ERROR - Error en insertar: No se proporcionaron datos para insertar
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool de conexiones cerrado
+2026-03-09 22:57:18 - JVDB2 - INFO - Cerrando pool de conexiones
+2026-03-09 22:57:18 - JVDB2 - INFO - Pool cerrado

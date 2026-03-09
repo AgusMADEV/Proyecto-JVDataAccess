@@ -1,0 +1,5 @@
+# Mantener archivos .log fuera del repositorio
+*.log
+
+# Pero mantener el directorio
+!.gitkeep

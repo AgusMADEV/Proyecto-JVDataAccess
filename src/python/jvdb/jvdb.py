@@ -13,7 +13,10 @@ from typing import Optional, List, Dict, Any, Union
 try:
     from ..yoursql import YourSQLConnection
 except ImportError:
-    from yoursql import YourSQLConnection
+    import sys
+    import os
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+    from yoursql.yoursql import YourSQLConnection
 
 
 class JVDB:
