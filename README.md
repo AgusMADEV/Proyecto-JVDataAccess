@@ -1,59 +1,95 @@
-# NousData-Lab
-
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-2.3-000000?style=for-the-badge&logo=flask&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+# 🎮 NousData-Lab
 
-**Framework genérico de acceso a datos multi-formato con API REST, servicios de negocio reutilizables y arquitectura extensible.**
+### Framework genérico de acceso a datos multi-formato
+*API REST · Servicios de negocio reutilizables · Arquitectura extensible*
 
-[Instalación](#-instalación) · [Características](#-características) · [Arquitectura](#-arquitectura) · [API REST](#-api-rest) · [Ejemplos](#-ejemplos-de-uso)
+<br>
+
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.3-000000?style=flat-square&logo=flask&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
+<br>
+
+**[Instalación](#-instalación)** • 
+**[Características](#-características)** • 
+**[Arquitectura](#-arquitectura)** • 
+**[API REST](#-api-rest)** • 
+**[Ejemplos](#-ejemplos-de-uso)**
 
 </div>
 
----
-
-## 📋 Descripción
-
-**NousData-Lab** es un framework Python profesional que abstrae por completo el acceso a datos, permitiendo trabajar con **5 formatos de persistencia** de forma transparente e intercambiable. Diseñado con patrones de diseño sólidos (Factory, Repository, Strategy), incluye una API REST con autenticación JWT, servicios de negocio para gestión de sesiones/reportes y un sistema de migración entre formatos.
-
-El dominio de ejemplo implementa un **sistema completo de gestión de videojuegos** con juegos, estudios de desarrollo, jugadores, sesiones de juego y géneros.
+<br>
 
 ---
 
-## ✨ Características
+## 💡 Descripción
 
-| Categoría             | Funcionalidad         | Detalle                                                    |
-| --------------------- | --------------------- | ---------------------------------------------------------- |
-| 🗄️ **Multi-formato**  | 5 backends de datos   | SQLite · JSON · XML · CSV · TXT (JSON-Lines)               |
-| 🔄 **Intercambiable** | Factory + Strategy    | Cambiar formato con un solo parámetro                      |
-| 🌐 **API REST**       | Flask + Blueprints    | CRUD completo, paginación, filtros, health check           |
-| 🔐 **Autenticación**  | JWT + HMAC-SHA256     | Login, registro, tokens 24h, roles (admin/player/moderator)|
-| 🎮 **Sesiones**       | Servicio de negocio   | Compras, tracking de horas, logros, completado, ratings    |
-| 📊 **Reportes**       | Motor de informes     | Juegos, sesiones, jugadores, estadísticas, tendencias      |
-| 🔀 **Migración**      | Entre formatos        | SQLite → JSON, JSON → XML, etc. con backup automático      |
-| ⚙️ **Configuración**  | Deep merge + env vars | JSON config, variables de entorno, validación              |
-| 🧬 **Modelos**        | Dataclasses tipadas   | Validación de ratings, contraseñas salted, campos auto     |
-| 🏗️ **Extensible**     | Patrón Repository     | Añadir nuevos formatos implementando `DataManager`         |
+NousData-Lab es un **framework Python profesional** que abstrae por completo el acceso a datos, permitiendo trabajar con **5 formatos de persistencia** de forma transparente e intercambiable. 
 
----
+Diseñado con patrones de diseño sólidos (Factory, Repository, Strategy), incluye:
+- 🔐 API REST con autenticación JWT
+- 💼 Servicios de ne principales
 
-## 🏗 Arquitectura
+### 🗄️ Multi-formato
+Soporta **5 backends de datos**: SQLite · JSON · XML · CSV · TXT (JSON-Lines)
 
+### 🔄 Intercambiable
+Cambiar formato con un solo parámetro gracias a Factory + Strategy
+
+### 🌐 API REST completa
+Flask + Blueprints con CRUD, paginación, filtros y health check
+
+### 🔐 Autenticación robusta
+JWT + HMAC-SHA256 con login, registro, tokens 24h y roles (admin/player/moderator)
+
+### 🎮 Gestión de sesiones
+Servicio de negocio para compras, tracking de horas, logros, completado y ratings
+
+### 📊 Motor de reportes
+Informes de juegos, sesiones, jugadores, estadísticas y tendencias
+
+### 🔀 Migración de datos
+Transforma entre formatos (SQLite → JSON, JSON → XML, etc.) con backup automático
+
+### ⚙️ Configuración avanzada
+Deep merge + variables de entorno + validación
+
+### 🧬 Modelos tipados
+╔═════════════════════════════════════════════════════╗
+║              API REST (Flask)                       ║
+║      /auth  /games  /sessions  /reports             ║
+╠═════════════════════════════════════════════════════╣
+║            Capa de Negocio                          ║
+║  AuthService · SessionService · ReportService       ║
+╠═════════════════════════════════════════════════════╣
+║          Core Framework (Orquesta)                  ║
+║  DataAccessFramework · EntityManager · Repository   ║
+║     ConfigManager · MigrationManager                ║
+╠═════════════════════════════════════════════════════╣
+║          Capa de Acceso a Datos                     ║
+║  ┌──────┬──────┬──────┬──────┬──────────────────┐  ║
+║  │SQLite│ JSON │ XML  │ CSV  │ TXT/JSON-Lines   │  ║
+║  └──────┴──────┴──────┴──────┴──────────────────┘  ║
+╚═════════════════════════════════════════════════════╝
 ```
-┌─────────────────────────────────────────────────────┐
-│                    API REST (Flask)                  │
-│        /auth  /games  /sessions  /reports            │
-├─────────────────────────────────────────────────────┤
-│                 Capa de Negocio                      │
-│    AuthService  ·  SessionService  ·  ReportService │
-├─────────────────────────────────────────────────────┤
-│              Core Framework (Orquesta)               │
-│   DataAccessFramework · EntityManager · Repository   │
-│        ConfigManager · MigrationManager              │
+
+### 🎯 Patrones de Diseño
+
+**Factory Pattern**  
+`DataAccessFramework` crea el backend correcto según `data_format`
+
+**Repository Pattern**  
+`EntityManager[T]` proporciona CRUD genérico tipado por entidad
+
+**Strategy Pattern**  
+Cada `DataManager` implementa la misma interfaz con diferente almacenamiento
+
+<br>      ConfigManager · MigrationManager              │
 ├─────────────────────────────────────────────────────┤
 │              Capa de Acceso a Datos                  │
 │  ┌─────────┬──────┬──────┬──────┬─────────────────┐ │
@@ -96,27 +132,26 @@ NousData-Lab/
 │   │   ├── __init__.py            # Exporta AuthService, SessionService, ReportService
 │   │   ├── auth_service.py        # Autenticación JWT + HMAC-SHA256
 │   │   ├── session_service.py     # Gestión de sesiones de juego y stats
-│   │   └── report_service.py      # Motor de reportes y estadísticas
-│   └── api/                       # API REST Flask
-│       ├── __init__.py            # create_app()
-│       ├── app.py                 # Factory de Flask, JWT middleware
-│       └── routes/                # Blueprints
-│           ├── auth.py            # POST /auth/login, /auth/register
-│           ├── books.py           # CRUD /books
-│           ├── loans.py           # /loans endpoints
-│           └── reports.py         # /reports endpoints
-├── data/                          # Datos persistidos (auto-generado)
-├── ejemplo_uso.py                 # Demo completa con todos los servicios
-├── demo_simple.py                 # Demo rápida CRUD básico
-├── requirements.txt               # Dependencias del proyecto
-└── .gitignore
+│   │   └── re
+- Python 3.10+ (recomendado 3.13)
+- pip (gestor de paquetes)
+
+### Pasos de instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/AgusMADEV/NousData-Lab.git
+cd NousData-Lab
+
+# Crear entorno virtual
+python3 -m venv .venv
+source .venv/bin/activate  # En Windows: .venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
 ```
 
----
-
-## 🚀 Instalación
-
-### Requisitos previos
+<br> Requisitos previos
 
 - **Python 3.10+** (recomendado 3.13)
 - **pip** (gestor de paquetes)
@@ -136,9 +171,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+---uso
 
-## 💻 Ejemplos de Uso
+### 🚀💻 Ejemplos de Uso
 
 ### Inicio rápido
 
@@ -171,7 +206,7 @@ book_repo.save(libro)
 todos = book_repo.load_all()
 encontrado = book_repo.load(libro.id)
 book_repo.delete(libro.id)
-```
+```💼 
 
 ### Servicios de negocio
 
@@ -192,14 +227,14 @@ report = report_service.generate_books_report()
 ```
 
 ### Migración entre formatos
-
+🔄 
 ```python
 # Migrar todos los datos de SQLite a JSON con backup
 migration = framework.migration_manager
 migration.migrate(source_format='sqlite', target_format='json', backup=True)
 ```
 
-### Cambiar formato de persistencia
+### ⚙️ Cambiar formato de persistencia
 
 ```python
 # Basta con cambiar un parámetro
@@ -209,7 +244,7 @@ framework_csv  = create_framework(data_format='csv')
 framework_txt  = create_framework(data_format='txt')
 ```
 
-### Ejecutar las demos
+### 🎯 Ejecutar las demos
 
 ```bash
 # Demo rápida (CRUD básico)
@@ -223,7 +258,7 @@ python ejemplo_uso.py
 
 ## 🌐 API REST
 
-### Iniciar el servidor
+### 🔧 Iniciar el servidor
 
 ```python
 framework = create_framework(data_format='sqlite', config={'api.enabled': True, 'api.port': 5000})
@@ -231,7 +266,7 @@ framework.start_api()
 # Servidor en http://localhost:5000
 ```
 
-### Endpoints principales
+### 📍 Endpoints principales
 
 | Método   | Endpoint             | Auth | Descripción               |
 | -------- | -------------------- | ---- | ------------------------- |
@@ -249,7 +284,7 @@ framework.start_api()
 | `GET`    | `/reports/books`     | ✅   | Reporte de libros         |
 | `GET`    | `/reports/loans`     | ✅   | Reporte de préstamos      |
 
-### Ejemplo con cURL
+### 🔨 Ejemplo con cURL
 
 ```bash
 # Registrar usuario
@@ -273,19 +308,52 @@ curl -X POST http://localhost:5000/books \
 
 ## 🔐 Seguridad
 
-- **Contraseñas:** HMAC-SHA256 con salt aleatorio de 16 bytes (`secrets.token_hex`)
-- **Tokens JWT:** Expiración configurable (24h por defecto), algoritmo HS256
-- **Roles:** Sistema de 3 niveles → `admin`, `librarian`, `user`
-- **CORS:** Configurable por entorno
+> **Contraseñas**  
+> HMAC-SHA256 con salt aleatorio de 16 bytes (`secrets.token_hex`)
 
----
+> **Tokens JWT**  
+> Expiración configurable (24h por defecto), algoritmo HS256
 
-## 🛠 Tecnologías
+> **Roles**  
+> SistStack tecnológico
 
-| Componente    | Tecnología                 | Versión |
-| ------------- | -------------------------- | ------- |
-| Lenguaje      | Python                     | 3.13    |
-| API REST      | Flask                      | 2.3+    |
+<table>
+<tr>
+<td><strong>Lenguaje</strong></td>
+<td>Python 3.13</td>
+</tr>
+<tr>
+<td><strong>API REST</strong></td>
+<td>Flask 2.3+</td>
+</tr>
+<tr>
+<td><strong>CORS</strong></td>
+<td>Flask-CORS 4.0+</td>
+</tr>
+<tr>
+<td><strong>JWT</strong></td>
+<td>PyJWT / Flask-JWT-Extended 2.0+</td>
+</tr>
+<tr>
+<td><strong>Base de datos</strong></td>
+<td>SQLite3 (stdlib)</td>
+### 🎮 NousData-Lab
+*Framework de acceso a datos multi-formato*
+
+<br>
+
+Desarrollado con ❤️ por [Agustín Morcillo](https://github.com/AgusMADEV)
+
+[![GitHub](https://img.shields.io/badge/GitHub-AgusMADEV-181717?style=flat-square&logo=github)](https://github.com/AgusMADEV
+<td>lxml 5.0+</td>
+</tr>
+<tr>
+<td><strong>Fechas</strong></td>
+<td>python-dateutil 2.8+</td>
+</tr>
+</table>
+
+<br>PI REST      | Flask                      | 2.3+    |
 | CORS          | Flask-CORS                 | 4.0+    |
 | JWT           | PyJWT / Flask-JWT-Extended | 2.0+    |
 | Base de datos | SQLite3 (stdlib)           | —       |
