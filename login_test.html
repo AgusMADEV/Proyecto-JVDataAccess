@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NousData-Lab - Test Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .response.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        
+        .response.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #0c5460;
+        }
+        
+        .token-box {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        .endpoints {
+            margin-top: 20px;
+        }
+        
+        .endpoint-btn {
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        
+        .endpoint-btn:hover {
+            background: #e0e0e0;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 NousData-Lab API</h1>
+        <p class="subtitle">Sistema de gestión de videojuegos y jugadores</p>
+        
+        <div class="info-box">
+            <strong>ℹ️ Credenciales por defecto:</strong><br>
+            Email: gamer@email.com<br>
+            Password: password123
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value="gamer@email.com"
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"
+                    value="password123"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="btn">Iniciar Sesión</button>
+        </form>
+        
+        <div id="response" class="response"></div>
+        
+        <div id="endpoints" class="endpoints" style="display: none;">
+            <h3 style="margin-top: 20px; margin-bottom: 10px; color: #333;">🔗 Prueba estos endpoints:</h3>
+            <button class="endpoint-btn" onclick="testEndpoint('/api/games')">Ver Juegos</button>
+            <button class="endpoint-btn" onclick="testEndpoint('/api/auth/profile')">Mi Perfil</button>
+            <button class="endpoint-btn" onclick="testEndpoint('/api/sessions')">Mis Sesiones</button>
+            <button class="endpoint-btn" onclick="testEndpoint('/stats')">Estadísticas</button>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+        const API_URL = 'http://localhost:5000';
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const responseDiv = document.getElementById('response');
+            
+            responseDiv.innerHTML = '⏳ Iniciando sesión...';
+            responseDiv.className = 'response';
+            responseDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    authToken = data.token;
+                    responseDiv.className = 'response success';
+                    responseDiv.innerHTML = `
+                        <strong>✅ Login exitoso!</strong><br>
+                        <strong>Jugador:</strong> ${data.player.username}<br>
+                        <strong>Email:</strong> ${data.player.email}<br>
+                        <strong>Rol:</strong> ${data.player.role}<br>
+                        <strong>Nivel:</strong> ${data.player.level}<br>
+                        <div class="token-box">
+                            <strong>🔑 Token JWT:</strong><br>
+                            ${data.token}
+                        </div>
+                    `;
+                    document.getElementById('endpoints').style.display = 'block';
+                } else {
+                    responseDiv.className = 'response error';
+                    responseDiv.innerHTML = `
+                        <strong>❌ Error al iniciar sesión</strong><br>
+                        ${data.error || 'Error desconocido'}
+                    `;
+                }
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.innerHTML = `
+                    <strong>❌ Error de conexión</strong><br>
+                    ${error.message}<br>
+                    <small>Asegúrate de que el servidor esté ejecutándose en ${API_URL}</small>
+                `;
+            }
+        });
+
+        async function testEndpoint(endpoint) {
+            if (!authToken) {
+                alert('Primero debes iniciar sesión');
+                return;
+            }
+            
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = `⏳ Consultando ${endpoint}...`;
+            responseDiv.className = 'response';
+            
+            try {
+                const response = await fetch(`${API_URL}${endpoint}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    responseDiv.className = 'response success';
+                    responseDiv.innerHTML = `
+                        <strong>✅ Respuesta de ${endpoint}:</strong><br>
+                        <div class="token-box">
+                            ${JSON.stringify(data, null, 2)}
+                        </div>
+                    `;
+                } else {
+                    responseDiv.className = 'response error';
+                    responseDiv.innerHTML = `
+                        <strong>❌ Error en ${endpoint}</strong><br>
+                        ${data.error || 'Error desconocido'}
+                    `;
+                }
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.innerHTML = `
+                    <strong>❌ Error de conexión</strong><br>
+                    ${error.message}
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
