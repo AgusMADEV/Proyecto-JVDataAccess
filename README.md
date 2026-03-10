@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎮 NousData-Lab
+# 🎮 JVDATAACCESS
 
 ### Framework genérico de acceso a datos multi-formato
 *API REST · Servicios de negocio reutilizables · Arquitectura extensible*
@@ -29,7 +29,7 @@
 
 ## 💡 Descripción
 
-NousData-Lab es un **framework Python profesional** que abstrae por completo el acceso a datos, permitiendo trabajar con **5 formatos de persistencia** de forma transparente e intercambiable. 
+JVDATAACCESS es un **framework Python profesional** que abstrae por completo el acceso a datos, permitiendo trabajar con **5 formatos de persistencia** de forma transparente e intercambiable. 
 
 Diseñado con patrones de diseño sólidos (Factory, Repository, Strategy), incluye:
 - 🔐 API REST con autenticación JWT
@@ -111,7 +111,7 @@ Cada `DataManager` implementa la misma interfaz con diferente almacenamiento
 ## 📁 Estructura del Proyecto
 
 ```
-NousData-Lab/
+JVDATAACCESS/
 ├── data_access_framework/         # Paquete principal del framework
 │   ├── __init__.py                # API pública, create_framework()
 │   ├── models/                    # Entidades del dominio
@@ -140,8 +140,8 @@ NousData-Lab/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/AgusMADEV/NousData-Lab.git
-cd NousData-Lab
+git clone https://github.com/AgusMADEV/JVDATAACCESS.git
+cd JVDATAACCESS
 
 # Crear entorno virtual
 python3 -m venv .venv
@@ -160,8 +160,8 @@ pip install -r requirements.txt
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/luisrocedev/NousData-Lab.git
-cd NousData-Lab
+git clone https://github.com/AgusMADEV/JVDATAACCESS.git
+cd JVDATAACCESS
 
 # 2. Crear entorno virtual
 python3 -m venv .venv
@@ -337,7 +337,7 @@ curl -X POST http://localhost:5000/books \
 <tr>
 <td><strong>Base de datos</strong></td>
 <td>SQLite3 (stdlib)</td>
-### 🎮 NousData-Lab
+### 🎮 JVDATAACCESS
 *Framework de acceso a datos multi-formato*
 
 <br>
@@ -370,8 +370,8 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para
 
 <div align="center">
 
-**NousData-Lab** — Framework de acceso a datos multi-formato
+**JVDATAACCESS** — Framework de acceso a datos multi-formato
 
-Desarrollado por [Luis Rodriguez Cedeño](https://github.com/luisrocedev)
+Desarrollado por [Agustín Morcillo](https://github.com/AgusMADEV)
 
 </div>
